@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment # can be Service (used for admininstration)
+metadata:
+  name: mongodb-deployment # can be customized
+  labels:
+    app: mongodb
+spec: # specification for deployment
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb # can be customized
+  template:
+    metadata:
+      labels:
+        app: mongodb # can be customized
+    spec: # specification for pods
+      containers:
+      - name: mongodb 
+        image: mongo # can be customized
+        ports:
+        # - containerPort: 80

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment # can be Service (used for admininstration)
+metadata:
+  name: ngnix-deployment
+  labels:
+    app: ngnix
+spec: # specification for deployment
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec: # specification for pods
+      containers:
+      - name: nginx
+        image: nginx:1.16
+        ports:
+        - containerPort: 80
