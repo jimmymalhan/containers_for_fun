@@ -1,3 +1,3 @@
 # Sample Kubernetes Deployments
 - nginx
-- mongodb and mongodb express
+- mongoDB and mongoDB express
