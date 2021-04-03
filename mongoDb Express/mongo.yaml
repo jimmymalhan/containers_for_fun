@@ -4,7 +4,7 @@ metadata:
   name: mongodb-deployment
   labels:
     app: mongodb
-spec: # specification for deployment
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -13,7 +13,7 @@ spec: # specification for deployment
     metadata:
       labels:
         app: mongodb
-    spec: # specification for pods
+    spec:
       containers:
       - name: mongodb 
         image: mongo
