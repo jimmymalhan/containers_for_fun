@@ -1,2 +1,2 @@
-# kubernetes
+# Kubernetes
 - Sample Kubernetes Deployments

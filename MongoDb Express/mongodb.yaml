@@ -1,21 +1,26 @@
 apiVersion: apps/v1
-kind: Deployment # can be Service (used for admininstration)
+kind: Deployment
 metadata:
-  name: mongodb-deployment # can be customized
+  name: mongodb-deployment
   labels:
     app: mongodb
 spec: # specification for deployment
   replicas: 1
   selector:
     matchLabels:
-      app: mongodb # can be customized
+      app: mongodb
   template:
     metadata:
       labels:
-        app: mongodb # can be customized
+        app: mongodb
     spec: # specification for pods
       containers:
       - name: mongodb 
-        image: mongo # can be customized
+        image: mongo
         ports:
-        # - containerPort: 80
+        - containerPort: 27017
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value:
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value:
