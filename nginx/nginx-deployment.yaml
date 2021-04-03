@@ -1,5 +1,6 @@
+# sample deployment file
 apiVersion: apps/v1
-kind: Deployment # can be Service (used for admininstration)
+kind: Deployment # can be Service (used for administration)
 metadata:
   name: ngnix-deployment
   labels:
