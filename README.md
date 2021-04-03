@@ -1,2 +1,3 @@
-# Kubernetes
-- Sample Kubernetes Deployments
+# Sample Kubernetes Deployments
+- nginx
+- mongodb and mongodb express
