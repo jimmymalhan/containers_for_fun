@@ -23,10 +23,10 @@ spec:
         - name: MONGO_INITDB_ROOT_USERNAME
           valueFrom:
             secretKeyRef:
-              name: mongodb-secret # copied name under metadata in secret file
+              name: mongodb-secret
               key: mongo-root-username
         - name: MONGO_INITDB_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mongodb-secret # copied name under metadata in secret file
+              name: mongodb-secret
               key: mongo-root-password
