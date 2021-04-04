@@ -4,7 +4,7 @@
 - mongoDB and mongoDB express -> stateful Set
 ## Helm
 - coming soon...
-### Validating YAML?
+#### Validating YAML?
 ```bash
 brew install yamllint
 npm install -g yaml-lint
