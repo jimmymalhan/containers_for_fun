@@ -1,3 +1,3 @@
-# Sample Kubernetes Deployments
-- nginx
-- mongoDB and mongoDB express
+# Sample Kubernetes
+- nginx -> deployment strategy
+- mongoDB and mongoDB express -> stateful Set
