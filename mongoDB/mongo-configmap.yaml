@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: mongodb-configmap
 data:
-database_url: mongodb-service # copied from 'kind: services' metadata: name: <service_name>
+database_url: mongodb-service
