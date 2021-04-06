@@ -1,5 +1,5 @@
 ## Minikube
-mongoDB -> persistent storage
+MongoDB -> Persistent Storage
 
 * NAMESPACE - <your_defined_namespace>
 * NAME - mongo-express-service
