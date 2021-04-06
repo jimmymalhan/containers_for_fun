@@ -1,11 +1,10 @@
 ## Minikube
 - mongoDB and mongoDB express -> stateful Set # persistent storage
-|-----------|-----------------------|-------------|---------------------------------|
-| NAMESPACE |         NAME          | TARGET PORT |            URL                  |
-|-----------|-----------------------|-------------|---------------------------------|
-| defined   | mongo-express-service |        8081 | http://<your_External_IP>:30000 |
-|-----------|-----------------------|-------------|---------------------------------|
 
+ NAMESPACE - <your_defined_namespace>
+ NAME - mongo-express-service
+ TARGET PORT - 8081
+ URL - http://<your_external_IP>:30000
 ### Creating a New Database on the MongoExpress(URL) will lead you to following workflow per architecture:
 - 1 -> New Database Name
 - 2 -> MongoExpress External Service
