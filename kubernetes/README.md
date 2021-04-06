@@ -1,7 +1,7 @@
 # Kubernetes Projects
 ## Minikube
-- nginx -> deployment strategy
-- mongoDB and mongoDB express -> stateful Set # persistent storage
+- Nginx
+- MongoDB with MongoDB express # persistent storage
 
 #### Validating YAML?
 ```bash
