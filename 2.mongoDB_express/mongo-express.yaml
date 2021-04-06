@@ -39,10 +39,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongodb-express-service
+  name: mongo-express-service
 spec:
   selector:
-      app: mongodb-express
+      app: mongo-express
   type: LoadBalancer
   ports:
     - protocol: TCP

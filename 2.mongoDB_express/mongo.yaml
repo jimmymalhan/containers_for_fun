@@ -15,7 +15,7 @@ spec:
         app: mongodb
     spec:
       containers:
-      - name: mongodb 
+      - name: mongodb
         image: mongo
         ports:
         - containerPort: 27017
@@ -37,7 +37,7 @@ metadata:
   name: mongodb-service
 spec:
   selector:
-      app: mongodb
+    app: mongodb
   ports:
     - protocol: TCP
       port: 27017
