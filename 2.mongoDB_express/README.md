@@ -1,5 +1,5 @@
 ## Minikube
-- mongoDB and mongoDB express -> stateful Set # persistent storage
+mongoDB -> persistent storage
 
 * NAMESPACE - <your_defined_namespace>
 * NAME - mongo-express-service
