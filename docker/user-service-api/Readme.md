@@ -1,7 +1,7 @@
 ## Troubleshooting
 
 ### Port is already running with npm?
-  #### First, you would want to know which process is using port 3000 <port_name>
+#### First, you would want to know which process is using port 3000 <port_name>
 
 ```
 sudo lsof -i :3000
