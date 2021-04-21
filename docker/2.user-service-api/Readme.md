@@ -3,4 +3,5 @@
 *  Dockerfile for an API
 *  Running Containers for an API
 
-_Note- npm modules can be removed within an image by .dockerignore_
+# Hosting custom data
+[{"name":"Bob","email":"bob@gmail.com"},{"name":"Alice","email":"alice@gmail.com"},{"name":"Jake","email":"alice@gmail.com"},{"name":"Maria","email":"maria@yahoo.com"}]
