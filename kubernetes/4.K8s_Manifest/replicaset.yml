@@ -2,15 +2,15 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata: # ReplicaSet
 name: myapp-replicaset
-namespace: dev # enter default namespace
-labels:
+namespace: dev
+labels: # labels of the ReplicaSet itself
  app: app
  type: front-end
 spec: #- Replication Controller
 template:
-metadata: # - Pod
+ metadata: # - Pod
   name: myapp-pod
-  labels:
+  labels: # labels defined in template section are labels configured in pod
     app: app
     type: front-end
 spec: #- Pod
