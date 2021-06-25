@@ -1,0 +1,31 @@
+apiVersion: v1 #(deployment) # apps/<v1> replicaSet
+kind: Deployment
+metadata: # (object/dictionary) - Replication Controller
+ name: myapp-rc
+ labels: # (dictionary)
+   app: myapp
+   type: front-end
+spec: #- Replication Controller
+ replicas: 3
+ template:
+   metadata: # (object/dictionary) - Pod
+     name: myapp-pod
+     labels: # (dictionary)
+       app: myapp
+       type: front-end
+   spec: #- Pod
+     containers: # list of items
+       - name: nginx - container # name of container
+         image: nginx
+         resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+         ports:
+         - port: 80 # target port and port is same, if you don't provide target port, it will take the port value
+           containerPort: 30008 # ranges from 30000 - 32767
+         selector: # pull it from the containers
+          app: myapp 
+          type: front-end
+       # - name : backend-container # additional item
+       #   image: redis

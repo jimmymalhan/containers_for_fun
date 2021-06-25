@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: myapp-pod
+  namespace: dev
+  labels:
+    app: myapp # copy as selectors to service.yml
+    type: front-end
+
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+
+ nodeName: node02 # defines the pod to sechdule on the defined node
+
+or another way - create binding 
+
+apiVersion: v1
+kind: Binding
+metadata:
+  name: nginx
+target:
+  apiVersion: v1
+  kind: Node
+  name: node02 # to tell the pod to schedule on the defined node
+
+ssh-keygen -t rsa -C "jimmymalhan999@gmail.com" -f "id_rsa_personal"
