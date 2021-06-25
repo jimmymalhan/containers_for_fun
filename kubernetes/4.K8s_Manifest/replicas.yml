@@ -1,22 +1,25 @@
-   apiVersion: apps/v1
-   kind: ReplicaSet
-   metadata:
-     name: myapp-replicaset
-     labels:
-       app: myapp
-       type: front-end
-   spec:
-    template:
-       metadata:
-         name: myapp-pod
-         labels:
-           app: myapp
-           type: front-end
-       spec:
-        containers:
-        - name: nginx-container
-          image: nginx
-    replicas: 6
-    selector:
-      matchLabels:
-       type: front-end
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: # ReplicaSet
+name: myapp-replicaset
+namespace: dev # enter default namespace
+labels:
+ app: app
+ type: front-end
+spec: #- Replication Controller
+template:
+metadata: # - Pod
+  name: myapp-pod
+  labels:
+    app: app
+    type: front-end
+spec: #- Pod
+  containers:
+    - name: nginx - container # name of container
+      image: nginx
+    # - name : backend-container # additional item
+    #    image: redis
+replicas: 3
+selector: #optional # what pod falls under it as it manages pods which were not created as part of replicaset deployment(which will be based on labels)
+  matchLabels:
+    type: front-end
