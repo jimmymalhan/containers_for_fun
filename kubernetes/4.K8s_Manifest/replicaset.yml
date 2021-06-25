@@ -11,7 +11,7 @@ spec:
  replicas: 3
  selector:
   matchLabels:
-   app: app1
+   app: App1
    
 # inorder for replicaSet to configure with pod -> SELECTOR for replicaSet(above) MUST MATCH label for pod (BELOW)
 
@@ -19,7 +19,7 @@ template: # - Pod
  metadata: 
   name: app1-pod
   labels: # labels defined in template section are labels configured in pod
-    app: app1
+    app: App1
     type: front-end
     
 spec:
