@@ -9,7 +9,7 @@ spec:
    port: 80
    nodePort: 30008
  selector:
-   app: myapp # copy from labels - pod.yml
+   app: myapp # copy from pod.yml
    type: front-end
 
 
