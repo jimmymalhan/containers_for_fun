@@ -15,7 +15,7 @@ template:
     type: front-end
 spec: #- Pod
   containers:
-    - name: nginx - container # name of container
+    - name: nginx
       image: nginx
     # - name : backend-container # additional item
     #    image: redis
