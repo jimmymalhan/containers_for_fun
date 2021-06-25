@@ -24,6 +24,4 @@ metadata:
 target:
   apiVersion: v1
   kind: Node
-  name: node02 # to tell the pod to schedule on the defined node
-
-ssh-keygen -t rsa -C "jimmymalhan999@gmail.com" -f "id_rsa_personal"
+  name: node02 # to tell the pod to schedule on the defined node (node02)
