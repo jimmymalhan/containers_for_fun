@@ -1,15 +1,18 @@
+# Labels and Selector works in a similar fashion for service.yaml as it works with replicaset.yaml
 apiVersion: v1
 kind: Service
 metadata:
  name: myapp-service
+
 spec:
- type: NodePort
- ports:
+ selector: # selector should be similar to labels in service.yaml which is copied from pod.yaml
+   app: App1 # copy from pod.yaml
+   type: front-end
+
+ports:
  - targetPort: 80
    port: 80
    nodePort: 30008
- selector:
-   app: myapp # copy from pod.yml
-   type: front-end
+ type: NodePort
 
 
