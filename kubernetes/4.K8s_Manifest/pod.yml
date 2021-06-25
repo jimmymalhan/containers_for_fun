@@ -5,7 +5,7 @@ metadata:
   name: myapp-pod
   namespace: dev
   labels:
-    app: myapp # copy as selectors to service.yml
+    app: App1 # copy as selectors to service.yml
     type: front-end
 
 spec:
