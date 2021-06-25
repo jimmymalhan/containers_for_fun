@@ -1,25 +1,30 @@
 apiVersion: apps/v1
 kind: ReplicaSet
-metadata: # ReplicaSet
-name: myapp-replicaset
-namespace: dev
-labels: # labels of the ReplicaSet itself
- app: app
- type: front-end
-spec: #- Replication Controller
-template:
- metadata: # - Pod
-  name: myapp-pod
+metadata: 
+ name: myapp-replicaset # ReplicaSet
+ namespace: dev
+ labels: # labels of the ReplicaSet itself
+  app: app
+  type: front-end
+  
+spec: 
+ replicas: 3
+ selector:
+  matchLabels:
+   app: app1
+   
+# inorder for replicaSet to configure with pod -> SELECTOR for replicaSet(above) MUST MATCH label for pod (BELOW)
+
+template: # - Pod
+ metadata: 
+  name: app1-pod
   labels: # labels defined in template section are labels configured in pod
-    app: app
+    app: app1
     type: front-end
-spec: #- Pod
-  containers:
-    - name: nginx
-      image: nginx
+    
+spec:
+ containers:
+  - name: nginx
+    image: nginx
     # - name : backend-container # additional item
     #    image: redis
-replicas: 3
-selector: #optional # what pod falls under it as it manages pods which were not created as part of replicaset deployment(which will be based on labels)
-  matchLabels:
-    type: front-end
