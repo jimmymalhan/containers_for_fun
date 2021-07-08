@@ -13,9 +13,22 @@ spec:
   - name: nginx-container
     image: nginx
 
-  nodeName: node02 # defines the pod to sechdule on the defined node
+  nodeName: node02 # defines the pod to sechedule on the defined node
+  nodeSelector:
+    size: Large #Small, Medium, Large
+  or want large or Medium only?
+  affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+       nodeSelectorTerms:
+       - matchExpressions:
+         - key: size
+           operator: In
+           values: 
+           - Large
+           - Medium
 
-or another way - create binding 
+or another way - create binding to schedule node
 
 apiVersion: v1
 kind: Binding
