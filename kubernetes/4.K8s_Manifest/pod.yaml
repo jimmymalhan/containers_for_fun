@@ -33,6 +33,14 @@ spec:
            values: 
            - Large
            - Medium
+  or have the pod run on controlplane node ONLY
+  affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+       nodeSelectorTerms:
+       - matchExpressions:
+         - key: controlplane
+           operator: Exists
 
 or another way - create binding to schedule node
 
