@@ -14,6 +14,12 @@ spec:
     image: nginx
 
   nodeName: node02 # defines the pod to sechedule on the defined node
+  tolerations:
+ - key: "app"
+   operator: "Equal"
+   value: "blue"
+   effect: "NoSchedule" # NoSchedule , PreferNoSchedule, NoExecute
+  
   nodeSelector:
     size: Large #Small, Medium, Large
   or want large or Medium only?
@@ -38,3 +44,13 @@ target:
   apiVersion: v1
   kind: Node
   name: node02 # to tell the pod to schedule on the defined node (node02)
+  
+# Node Affinity Types
+# Available
+
+# requiredDuringSchedulingIgnoredDuringExecution
+# preferredDuringSchedulingIgnoredDuringExecution
+# Planned
+
+# requiredDuringSchedulingRequriedDuringExecution
+# preferredDuringSchedulingRequiredDuringExecution
