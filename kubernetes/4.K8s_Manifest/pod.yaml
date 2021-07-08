@@ -22,7 +22,8 @@ spec:
   
   nodeSelector:
     size: Large #Small, Medium, Large
-  or want large or Medium only?
+  
+  #or want large and Medium only?
   affinity:
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
@@ -33,7 +34,8 @@ spec:
            values: 
            - Large
            - Medium
-  or have the pod run on controlplane node ONLY
+  
+  #or have the pod run on controlplane node ONLY
   affinity:
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
@@ -42,7 +44,7 @@ spec:
          - key: controlplane
            operator: Exists
 
-or another way - create binding to schedule node
+or another way - create binding to SCHEDULE node
 
 apiVersion: v1
 kind: Binding
