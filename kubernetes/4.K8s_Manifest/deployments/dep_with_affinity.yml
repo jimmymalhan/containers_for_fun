@@ -23,3 +23,6 @@ spec:
             - matchExpressions:
               - key: node-role.kubernetes.io/master
                 operator: Exists
+                
+                
+# https://github.com/kodekloudhub/certified-kubernetes-administrator-course/blob/master/docs/03-Scheduling/09-Node-Affinity.md
