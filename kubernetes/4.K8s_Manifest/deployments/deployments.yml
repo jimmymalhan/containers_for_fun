@@ -16,6 +16,13 @@ spec:
       containers:
       - name: nginx-container
         image: nginx
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node-role.kubernetes.io/master
+                operator: Exists
   replicas: 3
   selector:
     matchLabels:
