@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: myapp-pod
+  namespace: dev
+  labels:
+    app: App1 # copy as selectors to service.yml
+    type: front-end
+
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+
+  nodeName: node02 # defines the pod to sechedule on the defined node
+  tolerations:
+ - key: "app"
+   operator: "Equal"
+   value: "blue"
+   effect: "NoSchedule" # NoSchedule , PreferNoSchedule, NoExecute
+  
+  nodeSelector:
+    size: Large #Small, Medium, Large
+  
+  #or want large and Medium only?
+  affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+       nodeSelectorTerms:
+       - matchExpressions:
+         - key: size
+           operator: In
+           values: 
+           - Large
+           - Medium
+  
+  #or have the pod run on controlplane node ONLY
+  affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+       nodeSelectorTerms:
+       - matchExpressions:
+         - key: controlplane
+           operator: Exists
+
+or another way - create binding to SCHEDULE node
+
+apiVersion: v1
+kind: Binding
+metadata:
+  name: nginx
+target:
+  apiVersion: v1
+  kind: Node
+  name: node02 # to tell the pod to schedule on the defined node (node02)
+  
+# Node Affinity Types
+# Available
+
+# requiredDuringSchedulingIgnoredDuringExecution
+# preferredDuringSchedulingIgnoredDuringExecution
+# Planned
+
+# requiredDuringSchedulingRequriedDuringExecution
+# preferredDuringSchedulingRequiredDuringExecution
