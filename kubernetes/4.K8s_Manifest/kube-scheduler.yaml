@@ -54,8 +54,9 @@ spec:
       type: FileOrCreate
     name: kubeconfig
 status: {}
-
-
+####
+# ADD NEW SCHEDULER 
+####
 # - --leader-elect=false
 # - --port=10282
 # - --scheduler-name=my-scheduler
@@ -129,3 +130,15 @@ spec:
       type: FileOrCreate
     name: kubeconfig
 status: {}
+
+### Create Pod based on "my-scheduler"
+---
+apiVersion: v1 
+kind: Pod 
+metadata:
+  name: nginx 
+spec:
+  schedulerName: my-scheduler
+  containers:
+  - image: nginx
+    name: nginx
