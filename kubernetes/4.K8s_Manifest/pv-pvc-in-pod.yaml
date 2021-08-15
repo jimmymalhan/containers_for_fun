@@ -1,0 +1,47 @@
+#pv-definition.yaml
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+    name: pv-vol1
+spec:
+    accessModes: [ "ReadWriteOnce" ]
+    capacity:
+     storage: 1Gi
+    hostPath:
+     path: /tmp/data
+
+---
+# pvc-definition.yaml
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: myclaim
+spec:
+  accessModes: [ "ReadWriteOnce" ]
+  resources:
+   requests:
+     storage: 1Gi
+
+---
+# pod-definition.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx
+      volumeMounts:
+      - mountPath: "/var/www/html"
+        name: web
+  volumes:
+    - name: web
+      persistentVolumeClaim:
+        claimName: myclaim
+
+# https://kubernetes.io/docs/concepts/storage/persistent-volumes/#claims-as-volumes
+# https://github.com/kodekloudhub/certified-kubernetes-administrator-course/blob/master/docs/08-Storage/09-Using-PVC-in-PODs.md
