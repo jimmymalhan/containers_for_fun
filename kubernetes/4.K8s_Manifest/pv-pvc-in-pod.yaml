@@ -11,9 +11,8 @@ spec:
     hostPath:
      path: /tmp/data
 
----
 # pvc
-
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -24,9 +23,8 @@ spec:
    requests:
      storage: 1Gi
 
----
 # pod with pvc
-
+---
 apiVersion: v1
 kind: Pod
 metadata:
@@ -43,8 +41,8 @@ spec:
       persistentVolumeClaim:
         claimName: myclaim
 
----
 # pod with pv (no pvc required)
+---
 apiVersion: v1
 kind: Pod
 metadata:
