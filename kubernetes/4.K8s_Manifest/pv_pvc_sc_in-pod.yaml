@@ -80,7 +80,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
    name: google-storage
-provisioner: kubernetes.io/gce-pd
+provisioner: kubernetes.io/gce-pd # no provisioner means - it doesn't support sc
 # Silver Class
 parameters:
    type: pd-standard
