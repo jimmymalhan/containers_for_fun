@@ -20,6 +20,7 @@ metadata:
   name: myclaim
 spec:
   accessModes: [ "ReadWriteOnce" ]
+  storageCLassName: google-storage # only used when pv is not create and SC is created
   resources:
    requests:
      storage: 1Gi
@@ -58,12 +59,39 @@ spec:
     volumeMounts:
     - mountPath: /log
       name: log-volume
-
+      
+  # us the following section of the volume coming from pv
   volumes:
   - name: log-volume
     hostPath:
       path: /var/log/webapp  # directory location on host
       type: Directory # Optional
+      
+  # use the following section coming from pvc
+  volumes:
+    - name: web
+      persistentVolumeClaim:
+        claimName: myclaim
 
+# Storage Class
+# Now, we have a Storage Class, So we no longer to define Persistent Volume. It will create automatically when a Storage Class is created. It's called Dynamic Provisioning.
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+   name: google-storage
+provisioner: kubernetes.io/gce-pd
+parameters:
+   type: pd-standard [pd-standard | pd-ssd]
+   replication-type: none [none | regional-pd]
+
+# SC from GKE & AWS
+#https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes#storageclasses
+#https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html
+
+# General
 # https://kubernetes.io/docs/concepts/storage/persistent-volumes/#claims-as-volumes
 # https://github.com/kodekloudhub/certified-kubernetes-administrator-course/blob/master/docs/08-Storage/09-Using-PVC-in-PODs.md
+
+# Master
+# https://github.com/kodekloudhub/certified-kubernetes-administrator-course/blob/master/docs/08-Storage/12-Storage-Class.md
