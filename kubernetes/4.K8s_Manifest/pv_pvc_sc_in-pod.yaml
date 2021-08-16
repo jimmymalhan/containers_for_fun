@@ -83,7 +83,7 @@ kind: StorageClass
 metadata:
    name: google-storage
 provisioner: kubernetes.io/gce-pd # no provisioner means - it doesn't support sc
-volumeBindingMode: WaitForFirstConsumer
+volumeBindingMode: WaitForFirstConsumer # or Immediate
 # Silver Class
 parameters:
    type: pd-standard
