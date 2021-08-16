@@ -1,4 +1,4 @@
-#pv-definition.yaml
+# pv
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -12,7 +12,7 @@ spec:
      path: /tmp/data
 
 ---
-# pvc-definition.yaml
+# pvc
 
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -25,7 +25,7 @@ spec:
      storage: 1Gi
 
 ---
-# pod-definition.yaml
+# pod with pvc
 
 apiVersion: v1
 kind: Pod
@@ -42,6 +42,31 @@ spec:
     - name: web
       persistentVolumeClaim:
         claimName: myclaim
+
+---
+# pod with pv (no pvc required)
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp
+spec:
+  containers:
+  - name: event-simulator
+    image: kodekloud/event-simulator
+    env:
+    - name: LOG_HANDLERS
+      value: file
+    volumeMounts:
+    - mountPath: /log
+      name: log-volume
+
+  volumes:
+  - name: log-volume
+    hostPath:
+      # directory location on host
+      path: /var/log/webapp
+      # this field is optional
+      type: Directory
 
 # https://kubernetes.io/docs/concepts/storage/persistent-volumes/#claims-as-volumes
 # https://github.com/kodekloudhub/certified-kubernetes-administrator-course/blob/master/docs/08-Storage/09-Using-PVC-in-PODs.md
