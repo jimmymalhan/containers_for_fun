@@ -19,7 +19,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: myclaim
 spec:
-  accessModes: [ "ReadWriteOnce" ]
+  accessModes: [ "ReadWriteMany" ]
   storageCLassName: google-storage # only used when pv is not create and SC is created
   resources:
    requests:
@@ -81,9 +81,18 @@ kind: StorageClass
 metadata:
    name: google-storage
 provisioner: kubernetes.io/gce-pd
+# Silver Class
 parameters:
-   type: pd-standard [pd-standard | pd-ssd]
-   replication-type: none [none | regional-pd]
+   type: pd-standard
+   replication-type: none
+# or Gold Class
+parameters:
+   type: pd-ssd
+   replication-type: none
+# or Platinum Class
+parameters:
+   type: pd-ssd # [pd-standard | pd-ssd]
+   replication-type: regional-pd # [none | regional-pd]
 
 # SC from GKE & AWS
 #https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes#storageclasses
