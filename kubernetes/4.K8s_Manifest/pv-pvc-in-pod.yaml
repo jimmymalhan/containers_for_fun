@@ -3,14 +3,15 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-    name: pv-vol1
+    name: pv-log
 spec:
-    accessModes: [ "ReadWriteOnce" ]
+    persistentVolumeReclaimPolicy: Retain
+    accessModes: [ "ReadWriteMany" ]
     capacity:
-     storage: 1Gi
+     storage: 100Mi
     hostPath:
-     path: /tmp/data
-
+     path: /pv/log
+     
 # pvc
 ---
 apiVersion: v1
