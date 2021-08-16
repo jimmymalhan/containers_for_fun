@@ -1,7 +1,7 @@
 #pv-definition.yaml
 ---
-kind: PersistentVolume
 apiVersion: v1
+kind: PersistentVolume
 metadata:
     name: pv-vol1
 spec:
@@ -14,8 +14,8 @@ spec:
 ---
 # pvc-definition.yaml
 
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
   name: myclaim
 spec:
