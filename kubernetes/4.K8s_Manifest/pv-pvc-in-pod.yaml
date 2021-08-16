@@ -39,7 +39,7 @@ spec:
         name: web
   volumes:
     - name: web
-      persistentVolumeClaim:
+      persistentVolumeClaim: # replaced by `hostPath` from pv
         claimName: myclaim
 
 # pod with pv (no pvc required)
