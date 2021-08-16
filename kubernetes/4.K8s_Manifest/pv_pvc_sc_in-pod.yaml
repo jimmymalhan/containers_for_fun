@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-    name: pv-log
+    name: local-pv
 spec:
     persistentVolumeReclaimPolicy: Retain
     accessModes: [ "ReadWriteMany" ]
@@ -18,14 +18,14 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: myclaim # name of pv
+  name: local-pvc # name of pv
 spec:
   accessModes: [ "ReadWriteMany" ]
   storageClassName: local-storage # if pv created then match the storage class name
   # storageCLassName: google-storage # only used when pv is not create and SC is created && if pv created then match the storage class name
   resources:
    requests:
-     storage: 1Gi
+     storage: 500Mi
 
 # pod with pvc
 ---
@@ -39,9 +39,9 @@ spec:
       image: nginx
       volumeMounts:
       - mountPath: "/var/www/html"
-        name: web
+        name: web # 1- name must match to pvc
   volumes:
-    - name: web
+    - name: web # 1- name must match to pod
       persistentVolumeClaim: # replaced by `hostPath` from pv
         claimName: myclaim
 
