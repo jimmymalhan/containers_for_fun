@@ -11,16 +11,18 @@ spec:
      storage: 100Mi
     hostPath:
      path: /pv/log
+    storageClassName: local-storage # name of pvc
      
 # pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: myclaim
+  name: myclaim # name of pv
 spec:
   accessModes: [ "ReadWriteMany" ]
-  storageCLassName: google-storage # only used when pv is not create and SC is created
+  storageClassName: local-storage # if pv created then match the storage class name
+  # storageCLassName: google-storage # only used when pv is not create and SC is created && if pv created then match the storage class name
   resources:
    requests:
      storage: 1Gi
