@@ -1,4 +1,3 @@
-## https://gitlab.com/nanuchi/techworld-js-docker-demo-app
 ## demo app - developing with Docker
 
 This demo app shows a simple user profile app set up using 
